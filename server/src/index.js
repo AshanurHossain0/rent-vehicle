@@ -14,7 +14,7 @@ mongoose.connect(process.env.CONNECTION_STRING)
 
 app.use("/",route)
 
-app.listen(process.env.PORT || 3001,(err)=>{
+app.listen(process.env.PORT || 3000,(err)=>{
     if(err) return console.log(err.message)
-    console.log("server is running on port : ",process.env.PORT || 3001)
+    console.log("server is running on port : ",process.env.PORT || 3000)
 })
