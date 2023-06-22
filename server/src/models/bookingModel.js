@@ -1,7 +1,14 @@
 const mongoose=require("mongoose")
 
 const bookingSchema=new mongoose.Schema({
-    
+    fName:{
+        type:String,
+        required:true
+    },
+    lName:{
+        type:String,
+        required:true
+    },
     vehicleId:{
         type:mongoose.Schema.Types.ObjectId,
         ref:"Vehicle",
