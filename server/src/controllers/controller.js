@@ -42,3 +42,16 @@ exports.bookVehicle=async function(req,res){
         return res.status(500).send({status:false, message:err.message})
     }
 }
+
+exports.getVehicle=async function(req,res){
+    try{
+        const type=req.params.type;
+        const vehicles=await vehicleModel.find({type:type,isBooked:false});
+        
+        return res.status(200).send({status:true,message:"success",data:vehicles})
+
+    }
+    catch(err){
+        return res.status(500).send({status:false, message:err.message})
+    }
+}
