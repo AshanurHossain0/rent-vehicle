@@ -1,7 +1,8 @@
 const express=require("express")
 const router=express.Router()
+const {addVehicle} = require("../controllers/controller.js")
 
-router.post("/",)
+router.post("/vehicle",addVehicle)
 router.post("/",)
 router.get("/",)
 
