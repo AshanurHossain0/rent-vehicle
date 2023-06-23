@@ -2,6 +2,8 @@
 import react, { useState } from 'react';
 import './App.css';
 import FirstQ from './components/FirstQ';
+import SecondQ from './components/SecondQ';
+import ThirdQ from './components/ThirdQ';
 
 function App() {
 
@@ -17,7 +19,12 @@ function App() {
   function updateQuestion(no) { setqNo(no) }
   function addfName(fName) { setfName(fName) }
   function addlName(lName) { setlName(lName) }
+  function addWheels(wheels) { setWheels(wheels) }
+  function addType(type) { setWheels(type) }
 
+  function handleSubmit() {
+    console.log(fName, lName, wheels);
+  }
 
 
   return (
@@ -26,17 +33,20 @@ function App() {
       switch (qNo) {
         case 1:
           return <FirstQ addfName={addfName} addlName={addlName} updateQuestion={updateQuestion} qNo={qNo} />
+
         case 2:
-          return <>Second</>
+          return <SecondQ addWheels={addWheels} updateQuestion={updateQuestion} qNo={qNo} />
+
         case 3:
-          return <>Third</>
+          return <ThirdQ wheels={wheels} addType={addType} updateQuestion={updateQuestion} qNo={qNo} />
+
         case 4:
           return <>Fourth</>
         default:
           return <>Fifth</>
       }
     })()
-  // }
+    // }
   )
 
 }
