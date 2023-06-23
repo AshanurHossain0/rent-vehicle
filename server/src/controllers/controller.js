@@ -64,7 +64,6 @@ exports.getVehicle=async function(req,res){
         if(type) queryObj.type=type;
 
         const vehicles=await vehicleModel.find(queryObj);
-        if(vehicles.length===0) return res.status(404).send({status:false,message:"no vehicle is available"})
         
         return res.status(200).send({status:true,message:"success",data:vehicles})
 
