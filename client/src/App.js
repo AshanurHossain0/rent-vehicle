@@ -4,6 +4,7 @@ import './App.css';
 import FirstQ from './components/FirstQ';
 import SecondQ from './components/SecondQ';
 import ThirdQ from './components/ThirdQ';
+import FourthQ from './components/FourthQ';
 
 function App() {
 
@@ -12,7 +13,7 @@ function App() {
   const [lName, setlName] = useState("");
   const [wheels, setWheels] = useState(0);
   const [type, setType] = useState("");
-  const [name, setName] = useState("");
+  const [vehicleId, setVehicleId] = useState("");
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
 
@@ -20,10 +21,11 @@ function App() {
   function addfName(fName) { setfName(fName) }
   function addlName(lName) { setlName(lName) }
   function addWheels(wheels) { setWheels(wheels) }
-  function addType(type) { setWheels(type) }
+  function addType(type) { setType(type) }
+  function addVehicleId(vehicleId) { setVehicleId(vehicleId) }
 
   function handleSubmit() {
-    console.log(fName, lName, wheels);
+    console.log(fName, lName, wheels, type, vehicleId);
   }
 
 
@@ -41,9 +43,9 @@ function App() {
           return <ThirdQ wheels={wheels} addType={addType} updateQuestion={updateQuestion} qNo={qNo} />
 
         case 4:
-          return <>Fourth</>
+          return <FourthQ type={type} addVehicleId={addVehicleId} updateQuestion={updateQuestion} qNo={qNo} />
         default:
-          return <>Fifth</>
+          return <button onClick={handleSubmit}>Submit</button>
       }
     })()
     // }
