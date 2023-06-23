@@ -8,10 +8,11 @@ const ObjectId = mongoose.Types.ObjectId;
 exports.addVehicle=async function(req,res){
     try{
         const vehicleData = [
-            { type: 'car', name: 'Hatchback'},
-            { type: 'car', name: 'SUV'},
-            { type: 'car', name: 'Sedan'},
-            { type: 'bike', name: 'Cruiser'}
+            { type: 'car', wheels:4, name: 'Hatchback'},
+            { type: 'car', wheels:4, name: 'SUV'},
+            { type: 'car', wheels:4, name: 'Sedan'},
+            { type: 'bike', wheels:2, name: 'Cruiser'},
+            { type: 'bi-cycle', wheels:2, name: 'Avon'}
         ];
         await vehicleModel.insertMany(vehicleData);
         return res.status(201).send({status:true,message:"success"})
@@ -55,8 +56,15 @@ exports.bookVehicle=async function(req,res){
 // get available vehicle based on user preference
 exports.getVehicle=async function(req,res){
     try{
-        const type=req.params.type;
-        const vehicles=await vehicleModel.find({type:type,isBooked:false});
+        const {wheels,type}=req.query;
+        if(!wheels && !type) return res.status(400).send({status:false,message:"please provide type of vehicle or number of wheels"})
+
+        const queryObj={isBooked:false};
+        if(wheels) queryObj.wheels=wheels;
+        if(type) queryObj.type=type;
+
+        const vehicles=await vehicleModel.find(queryObj);
+        if(vehicles.length===0) return res.status(404).send({status:false,message:"no vehicle is available"})
         
         return res.status(200).send({status:true,message:"success",data:vehicles})
 

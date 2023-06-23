@@ -3,7 +3,8 @@ const mongoose=require("mongoose")
 const vehicleSchema=new mongoose.Schema({
     
     name:{type:String,required:true},
-    type:{type:String,required:true,enum:["car","bike"]},
+    wheels:{type:Number,required:true},
+    type:{type:String,required:true,enum:["car","bike","bi-cycle"]},
     isBooked:{type:Boolean,default:false}
 })
 
