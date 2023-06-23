@@ -4,7 +4,7 @@ const {addVehicle,bookVehicle,getVehicle} = require("../controllers/controller.j
 
 router.post("/vehicle",addVehicle)
 router.post("/book/:vehicleId",bookVehicle)
-router.get("/vehicle/:type",getVehicle)
+router.get("/vehicle",getVehicle)
 
 router.all('/*',(req ,res)=>{
     res.status(400).send({status: false , message :" path invalid"})
