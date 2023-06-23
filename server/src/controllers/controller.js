@@ -26,7 +26,7 @@ exports.addVehicle=async function(req,res){
 exports.bookVehicle=async function(req,res){
     try{
         const nameRegex = /^[a-z ,.'-]+$/i
-        const {fName,lName}=req.body;
+        let {fName,lName}=req.body;
 
         let vehicleId=req.params.vehicleId;
         if(!ObjectId.isValid(vehicleId)){
@@ -36,8 +36,10 @@ exports.bookVehicle=async function(req,res){
         if (!fName) return res.status(400).send({ status: false, message: "first name is mandatory" })
         if (!lName) return res.status(400).send({ status: false, message: "last name is mandatory" })
 
-        if (! nameRegex.test(fName.trim())) return res.status(400).send({ status: false, message: "invalid first name" })
-        if (! nameRegex.test(lName.trim())) return res.status(400).send({ status: false, message: "invalid last name" })
+        fName=fName.trim();
+        lName=lName.trim();
+        if (! nameRegex.test(fName)) return res.status(400).send({ status: false, message: "invalid first name" })
+        if (! nameRegex.test(lName)) return res.status(400).send({ status: false, message: "invalid last name" })
 
         const {startDate,endDate}=req.body;
         if(!startDate || !endDate) return res.status(400).send({status:false, message:"start and end date is mandatory"});
