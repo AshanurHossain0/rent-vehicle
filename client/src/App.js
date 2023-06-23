@@ -1,10 +1,13 @@
 
-import react, { useState } from 'react';
+import React, { useState } from 'react';
 import './App.css';
+import { bookVehicle } from './scripts/script';
+
 import FirstQ from './components/FirstQ';
 import SecondQ from './components/SecondQ';
 import ThirdQ from './components/ThirdQ';
 import FourthQ from './components/FourthQ';
+import Fifthq from './components/Fifthq';
 
 function App() {
 
@@ -23,9 +26,19 @@ function App() {
   function addWheels(wheels) { setWheels(wheels) }
   function addType(type) { setType(type) }
   function addVehicleId(vehicleId) { setVehicleId(vehicleId) }
+  function addStartDate(date) { setStartDate(date) }
+  function addEndDate(date) { setEndDate(date) }
 
-  function handleSubmit() {
-    console.log(fName, lName, wheels, type, vehicleId);
+  async function handleSubmit() {
+    const bodyData={fName, lName, wheels, type,startDate, endDate}
+    bookVehicle(vehicleId,bodyData)
+    .then((res)=>{
+      window.alert("Booking successful")
+      setqNo(1);
+    })
+    .catch((err)=>{
+      window.alert(err.message)
+    })
   }
 
 
@@ -44,6 +57,8 @@ function App() {
 
         case 4:
           return <FourthQ type={type} addVehicleId={addVehicleId} updateQuestion={updateQuestion} qNo={qNo} />
+        case 5:
+          return <Fifthq addStartDate={addStartDate} addEndDate={addEndDate} updateQuestion={updateQuestion} qNo={qNo} />
         default:
           return <button onClick={handleSubmit}>Submit</button>
       }

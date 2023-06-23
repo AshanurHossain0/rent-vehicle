@@ -8,7 +8,7 @@ export const getVehicle = async (query) => {
     try {
         const res = await axios.get('http://localhost:3001/vehicle',config)
         let arr=res.data.data;
-        console.log(arr)
+        console.log(arr);
         if(arr.length===0 || query.wheels===undefined) return arr;
         let arr2=[];
         for(let i=0;i<arr.length;i++){
@@ -19,6 +19,20 @@ export const getVehicle = async (query) => {
         return arr2;
     }
     catch (err) {
-        alert(err.message)
+        window.alert(err.message)
+    }
+}
+export const bookVehicle = async (vehicleId,bodyData) => {
+    const config = {
+        headers: {"Content-Type": "application/json"},
+    }
+    const body = JSON.stringify(bodyData);
+    try {
+        console.log(vehicleId,bodyData);
+        const res = await axios.post(`http://localhost:3001/book/${vehicleId}`,body,config)
+        return res;
+    }
+    catch (err) {
+        window.alert(err.message)
     }
 }
