@@ -1,8 +1,17 @@
 import React from 'react'
 
-const FirstQ = ({ addfName, addlName, updateQuestion, qNo }) => {
+const FirstQ = ({fName,lName,addfName, addlName, updateQuestion, qNo }) => {
 
   function handleSubmit() {
+    if(!fName || !lName) {
+      window.alert("First and last name is mandatory..!!!");
+      return;
+    }
+    const nameRegex = /^[a-z ,.'-]+$/i
+    if(!nameRegex.test(fName) || !nameRegex.test(lName)){
+      window.alert("Invalid name..!!!");
+      return;
+    }
     updateQuestion(qNo+1)
   }
   return (

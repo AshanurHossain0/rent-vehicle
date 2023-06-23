@@ -37,6 +37,7 @@ function App() {
       setqNo(1);
     })
     .catch((err)=>{
+      console.log(err);
       window.alert(err.message)
     })
   }
@@ -47,7 +48,7 @@ function App() {
     (() => {
       switch (qNo) {
         case 1:
-          return <FirstQ addfName={addfName} addlName={addlName} updateQuestion={updateQuestion} qNo={qNo} />
+          return <FirstQ fName={fName} lName={lName} addfName={addfName} addlName={addlName} updateQuestion={updateQuestion} qNo={qNo} />
 
         case 2:
           return <SecondQ addWheels={addWheels} updateQuestion={updateQuestion} qNo={qNo} />
