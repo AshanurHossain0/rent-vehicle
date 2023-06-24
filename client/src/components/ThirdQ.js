@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import { getVehicle } from '../scripts/script'
 
-const ThirdQ = ({ wheels, addType, updateQuestion, qNo }) => {
+const ThirdQ = ({type, wheels, addType, updateQuestion, qNo }) => {
   const [data, setData] = useState([])
   const [flag, setFlag] = useState(false)
   function handleSubmit() {
+    if(!type){
+      window.alert("Select an option");
+      return;
+    }
     updateQuestion(qNo + 1)
   }
   useEffect(() => {

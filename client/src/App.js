@@ -7,7 +7,7 @@ import FirstQ from './components/FirstQ';
 import SecondQ from './components/SecondQ';
 import ThirdQ from './components/ThirdQ';
 import FourthQ from './components/FourthQ';
-import Fifthq from './components/Fifthq';
+import FifthQ from './components/FifthQ';
 
 function App() {
 
@@ -51,15 +51,15 @@ function App() {
           return <FirstQ fName={fName} lName={lName} addfName={addfName} addlName={addlName} updateQuestion={updateQuestion} qNo={qNo} />
 
         case 2:
-          return <SecondQ addWheels={addWheels} updateQuestion={updateQuestion} qNo={qNo} />
+          return <SecondQ wheels={wheels} addWheels={addWheels} updateQuestion={updateQuestion} qNo={qNo} />
 
         case 3:
-          return <ThirdQ wheels={wheels} addType={addType} updateQuestion={updateQuestion} qNo={qNo} />
+          return <ThirdQ type={type} wheels={wheels} addType={addType} updateQuestion={updateQuestion} qNo={qNo} />
 
         case 4:
-          return <FourthQ type={type} addVehicleId={addVehicleId} updateQuestion={updateQuestion} qNo={qNo} />
+          return <FourthQ vehicleId={vehicleId} type={type} addVehicleId={addVehicleId} updateQuestion={updateQuestion} qNo={qNo} />
         case 5:
-          return <Fifthq addStartDate={addStartDate} addEndDate={addEndDate} updateQuestion={updateQuestion} qNo={qNo} />
+          return <FifthQ startDate={startDate} endDate={endDate} addStartDate={addStartDate} addEndDate={addEndDate} updateQuestion={updateQuestion} qNo={qNo} />
         default:
           return <button onClick={handleSubmit}>Submit</button>
       }

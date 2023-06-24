@@ -1,7 +1,11 @@
 import React from 'react'
 
-const SecondQ = ({ addWheels, updateQuestion, qNo }) => {
+const SecondQ = ({wheels, addWheels, updateQuestion, qNo }) => {
     function handleSubmit() {
+        if(!wheels){
+            window.alert("Select an option");
+            return;
+        }
         updateQuestion(qNo + 1)
     }
     return (
