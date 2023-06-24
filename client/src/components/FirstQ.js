@@ -18,9 +18,9 @@ const FirstQ = ({fName,lName,addfName, addlName, updateQuestion, qNo }) => {
     <div>
       <h1>What is your name?</h1>
       <p>First Name</p>
-      <input name='fName' onChange={(e) => { addfName(e.target.value) }} />
+      <input className='bg-slate-900 border-white border' name='fName' onChange={(e) => { addfName(e.target.value) }} />
       <p>Last Name</p>
-      <input name='lName' onChange={(e) => { addlName(e.target.value) }} />
+      <input className='bg-slate-900 border-white border' name='lName' onChange={(e) => { addlName(e.target.value) }} />
       <button onClick={handleSubmit}>Next</button>
     </div>
   )
