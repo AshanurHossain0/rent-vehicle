@@ -12,7 +12,9 @@ exports.addVehicle=async function(req,res){
             { type: 'car', wheels:4, name: 'SUV'},
             { type: 'car', wheels:4, name: 'Sedan'},
             { type: 'bike', wheels:2, name: 'Cruiser'},
-            { type: 'bi-cycle', wheels:2, name: 'Avon'}
+            { type: 'bi-cycle', wheels:2, name: 'Avon'},
+            { type: 'bike', wheels:2, name: 'BMW'},
+            { type: 'bus', wheels:4, name: 'Tata'}
         ];
         await vehicleModel.insertMany(vehicleData);
         return res.status(201).send({status:true,message:"success"})
