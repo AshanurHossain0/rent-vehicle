@@ -61,7 +61,12 @@ function App() {
         case 5:
           return <FifthQ startDate={startDate} endDate={endDate} addStartDate={addStartDate} addEndDate={addEndDate} updateQuestion={updateQuestion} qNo={qNo} />
         default:
-          return <button onClick={handleSubmit}>Submit</button>
+          return <div className='w-full flex justify-center'>
+            <div className='flex flex-col w-10/12 md:w-1/4 border-white border p-[10px] mt-[5px]'>
+              <p className='text-xl font-bold'> Final Submit</p>
+              <button className='btn btn-blue mt-[10px]' onClick={handleSubmit}>Submit</button>
+            </div>
+          </div>
       }
     })()
     // }
